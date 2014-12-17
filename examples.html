@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Document</title>
+<style type="text/css">
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+a img { border: none; }
+
+a:link { color: #42413C; }
+a:hover, a:active, a:focus { text-decoration: none; }
+
+
+.container {
+	width: 690px;
+	background: #FFF;
+	margin: 0 auto; 
+}
+
+.content {
+	padding: 10px 0;
+}
+
+
+
+
+
+
+
+
+</style>
+
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="jquery.inputvalue.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+    <h1>Instructions</h1>
+
+    <h2>Layout</h2>
+
+      <input class="someClass1" type="text" />
+      <input class="someClass2" type="text" />
+      <input class="someClass3" type="text" title="Input 3"/>
+      <input class="someClass4" type="text" data-value="Input 4"/>
+      <input class="someClass_4" type="text" data-value="Input 4_"/>
+      <input class="someClass5" type="text" data-something="Input 5"/>
+      <input class="someClass6" type="text"/>
+      <input class="someClass7" type="text"/>
+
+
+      <form action="go.php" class="form1">
+          <input class="someClass8" type="text"/>
+          <input type="submit" value="Go"/>
+      </form>
+
+      <form action="go.php" class="form2">
+          <input class="someClass9" type="text"/>
+          <input class="someClass10" type="text"/>
+          <input class="someClass11" type="text"/>
+          <input type="submit" value="Go"/>
+      </form>
+
+      <form action="go.php" class="form3">
+          <input class="someClass12" type="text"/>
+          <input type="submit" value="Go"/>
+      </form>
+
+      <form action="go.php" class="form4">
+          <input class="someClass13" type="text"/>
+          <input class="someClass13" type="text"/>
+          <input type="submit" value="Go"/>
+      </form>
+
+      <input class="someClass14" type="text" title="Input 14 1"/>
+      <input class="someClass14" type="text" title="Input 14 2"/>
+
+
+      <form action="go.php" class="form5">
+          <input class="someClass15" type="text"/>
+          <input class="someClass16" type="text"/>
+          <input type="submit" value="Go"/>
+      </form>
+
+
+      <input class="someClass17" type="text" title="Input 17"/>
+
+
+    <!-- end .content --></div>
+  <!-- end .container --></div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $(".someClass1").inputValue({
+        value: 'Input 1',
+        reAppear: false
+    });
+
+    $(".someClass2").inputValue({
+        value: 'Input 2',
+        textOpacity: 0.65
+    });
+
+    $(".someClass3").inputValue({
+        valueSource: 'title',
+        removeTitle: true
+    });
+
+    $(".someClass4, .someClass_4").inputValue({
+        valueSource: 'data',
+        reAppear: false
+    });
+
+    $(".someClass5").inputValue({
+        valueSource: 'data',
+        dataKey: 'something'
+    });
+
+    $(".someClass6, .someClass7").inputValue({
+        value: ['Input 6', 'Input 7'],//no reappear
+        textOpacity: 0.4
+    });
+
+    $(".someClass8").inputValue({
+        value: 'Input 8',
+        formHandle: '.form1'
+    });
+
+
+    $(".someClass9, .someClass10, .someClass11").inputValue({
+        value: ['Input 9', 'Input 10', 'Input 11'],//no reappear
+        formHandle: '.form2',
+        alertSubmit: 'Please enter a value first!',
+        textOpacity: 0.25
+    });//this, chaining, and multiple data with reappear false
+
+    $(".someClass12").inputValue({
+        value: 'Input 12',
+        formHandle: '.form3',
+        alertSubmit: 'Please enter a value first!'
+    });
+
+    //2 inputs same class in a form
+    $(".someClass13").inputValue({
+        value: 'Input 13',
+        formHandle: '.form4',
+        alertSubmit: 'Please enter a value first!'
+    });
+
+    //2 inputs same class outside of form
+    $(".someClass14").inputValue({
+        valueSource: 'title',
+        removeTitle: true
+    });
+
+
+    //form with 2 inputs separately
+    $(".someClass15").inputValue({
+        value: 'Input 15',
+        formHandle: '.form5',
+        alertSubmit: 'Please enter a value first!'
+    });
+    $(".someClass16").inputValue({
+        value: 'Input 16',
+        formHandle: '.form5',
+        alertSubmit: 'Please enter a value first!'
+    });
+
+    //chainable
+    $(".someClass17").inputValue({
+        valueSource: 'title',
+        removeTitle: true
+    }).css('color', 'red');
+});
+
+
+</script>
+
+</body>
+</html>
